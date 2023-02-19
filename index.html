@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tata Power</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="Description" content="Tata Power is the largest power generation company in India aimed at providing uninterrupted power supply from its various plants located across India. They produce both conventional and renewable energy to meet the country&#39;s growing power needs. Click here to know more." /><link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" /><link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+<style>
+.contact-form-wrapper {
+    margin: 11px 0 3px 0;
+    text-align: center;
+}
+
+#contact-form{
+display:none;}
+
+.fill{font-size: 22px; margin-bottom: 0;}
+
+
+</style>
+
+</head>
+<body onload="NextQuestion(0)">
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+		
+	
+		<div class="main-wrapper">
+			<div class="heading_sub_heading">
+				<h1>Tata Power EZ Charge x Auto Expo’23</h1>
+				<p>Tata Power EZ Charge is present at Auto Expo 2023, a signature event to exhibit India’s Largest EV Charging Network</p>
+			</div>
+			<div class="car_bg_section">
+				<div class="car-bg"><img src="./images/tata-power-header-image.png"/></div>
+			</div>
+			
+			<div class="quize-section" id="quize-wrapper">
+				 <main>
+        <!-- creating a modal for when quiz ends -->
+        <div class="modal-container" id="score-modal">
+          
+            <div class="modal-content-container">
+              
+                <h1>Game Completed</h1>
+              
+                <div class="grade-details">
+                    <p>Attempts : 5</p>
+                    <p>Wrong Answers : <span id="wrong-answers"></span></p>
+                    <p>Right Answers : <span id="right-answers"></span></p>
+                    <p>Grade : <span id="grade-percentage"></span>%</p>
+                    <p style="display:none;"><span id="remarks"></span></p>
+					<p class="fill">Fill the form to claim your reward!</p>
+                </div>
+              
+                <div class="modal-button-container">
+                    <button onclick="closeScoreModal()">Continue</button>
+                </div>
+              
+            </div>
+        </div>
+
+        <div class="game-quiz-container">
+          
+           
+
+            <div class="game-question-container">
+                <h1 id="display-question"></h1>
+            </div>
+
+            <div class="game-options-container">
+              
+               <div class="modal-container" id="option-modal">
+                 
+                    <div class="modal-content-container">
+                         <h1>Please Pick An Option</h1>
+                      
+                         <div class="modal-button-container">
+                            <button onclick="closeOptionModal()">Continue</button>
+                        </div>
+                      
+                    </div>
+                 
+               </div>
+			   
+			      <div class="modal-container" id="currect-answer-modal">
+                 
+                    <div class="modal-content-container">
+                         <h1>Nice! Charging your way ahead</h1>
+                         <div class="modal-button-container">
+                            <button onclick="closeOptionModal()">Continue</button>
+                        </div>
+                      
+                    </div>
+                 
+               </div>
+			   
+			   
+			      <div class="modal-container" id="wrong-answer-modal">
+                    <div class="modal-content-container">
+                         <h1 style="color:#fd0023;">Oops! You ran out of charge</h1>
+                         <div class="modal-button-container">
+                            <button onclick="closeOptionModal()">Continue</button>
+                        </div>
+                      
+                    </div>
+                 
+               </div>
+              
+                <span>
+                    <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
+					<span class="alphabet">A</span>
+                    <label for="option-one" class="option" id="option-one-label"></label>
+                </span>
+              
+
+                <span>
+                    <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+					<span class="alphabet">B</span>
+                    <label for="option-two" class="option" id="option-two-label"></label>
+                </span>
+              
+
+                <span>
+                    <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+					<span class="alphabet">C</span>
+                    <label for="option-three" class="option" id="option-three-label"></label>
+                </span>
+              
+
+                <span>
+                    <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+					<span class="alphabet">D</span>
+                    <label for="option-four" class="option" id="option-four-label"></label>
+                </span>
+
+
+            </div>
+
+            <div class="next-button-container">
+                <button onclick="handleNextQuestion()">Next Question</button>
+            </div>
+					 <div class="game-details-container">
+                <h1>Score : <span id="player-score"></span> / 5</h1>
+                <h1> Question : <span id="question-number"></span> / 5</h1>
+            </div>
+
+        </div>
+    </main>
+			</div>
+			
+			<!--------quize complete here-------->
+			
+			<div class="contact-form-wrapper" id="contact-form">
+					<div class="contact-heading">
+						<h2>Fill the form below to Win</h2>
+					</div>
+					
+					     <form method="post" id="frmSubmit" autocomplete="off">
+						<input type="text" class="form-control"  name="Name" placeholder="Full Name" required>
+						<input type="text" class="form-control"  name="Designation" placeholder="Designation (Optional)">
+						<input type="text" class="form-control" name="Location" placeholder="Location">
+						<input type="email" class="form-control"  name="Email" placeholder="Email ID" required>
+						<input type="number" class="form-control" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" name="Mobile" placeholder="Mobile Number" required>
+						<input type="text"  class="form-control" name="Company" placeholder="Company" >
+						 <button type="submit" id="btnSubmit" class="submitbtn">Submit</button>
+                         <div id="msg" class="msg"></div>
+					</form>					
+			</div>		
+			</div>			
+		</div>
+    </div>
+	
+
+  
+
+  
+</div>
+	<div class="footer"></div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+<script>
+
+
+jQuery('#frmSubmit').on('submit',function(e){
+		e.preventDefault();
+		jQuery('#msg').html('Please wait...');
+		jQuery('#btnSubmit').attr('disabled',true);
+		jQuery.ajax({
+			url:'https://script.google.com/macros/s/AKfycbxANM-mDozTbPrpblrDuFtWdEzcS2I9ZzWMc8YkzYXvsHSa-URDOp3xrNp4J0jTyQFT/exec',
+			type:'post',
+			data:jQuery('#frmSubmit').serialize(),
+			success:function(result){
+			   jQuery('#frmSubmit')[0].reset();
+				jQuery('#btnSubmit').attr('disabled',false);
+				window.location.href='https://tatapower-event.com/thank-you.html';
+			}
+		});
+	  });
+
+
+
+const questions = [
+    {
+        question: "What's the dad joke equivalent to the car has gas in an electric car?",
+        optionA: "What's an electric car's favorite beverage? Juice",
+        optionB: "What does an EV want? EZ Charge​",
+        optionC: "Where do EV Drivers go? Everywhere (with EZ Charge)",
+        optionD: "All of the above",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "What do you spend gas money on now?​",
+        optionA: "Words, E-books!​",
+        optionB: "Solar panels! I'm going off-grid",
+        optionC: "Worldly Things :)",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+    {
+       question: "What is the tagline of Tata Power EZ Charge?​",
+        optionA: "The Present is Here.​",
+        optionB: "The Future is Here.",
+        optionC: "The Future is There.​",
+        optionD: "The Present is There.​",
+        correctOption: "optionB"
+    },
+
+    {
+      question: "EZ Charge is present in __ states",
+        optionA: "28​",
+        optionB: "27​",
+        optionC: "26​",
+        optionD: "25",
+        correctOption: "optionA"
+    },
+
+    {
+         question: "EZ Charge makes charging an EV an _ ​",
+        optionA: "Convenient process",
+        optionB: "Easy Process",
+        optionC: "EZ Process​",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "What are the incentive\s provided by the government in India for driving \ purchasing an EV?​",
+        optionA: "Income Tax Benefit​",
+        optionB: "Road Tax Exemptions​",
+        optionC: "Registration Fee Exemptions​",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "The collaboration between Tata Power (EZ Charge), Tata Motors, Tata Chemicals & Tata Autocomp, formed to facilitate the EV Revolution in India is called?​",
+        optionA: "Tata Collab​",
+        optionB: "Tata UniEVerse",
+        optionC: "Tata EV Revolution",
+        optionD: "Tata Universe​",
+        correctOption: "optionB"
+    },
+
+    {
+        question: "What is the power wattage of EZ Charge DC Fast Charger?​",
+        optionA: "30 KW​",
+        optionB: "60 KW​",
+        optionC: "45 KW​",
+        optionD: "None of the above​",
+        correctOption: "optionB"
+    },
+
+    {
+        question: "Where can you charge your EV with Tata Power EZ Charge?​",
+        optionA: "On Highway​",
+        optionB: "Workplace/Home​",
+        optionC: "Public Chargers (within city)​",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+
+    {
+        question: "Which EV is featured in Avengers Endgame?​",
+        optionA: "Audi e-tron​",
+        optionB: "Tata Tigor EV​",
+        optionC: "Volvo XC40​",
+        optionD: "Jaguar I-Pace​",
+        correctOption: "optionA"
+    },
+
+    {
+        question: "Types of transportation energized by Tata Power EZ Charge​",
+        optionA: "Cars​",
+        optionB: "Buses​",
+        optionC: "Commercial Vehicles",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "EZ Charge is India’s __ Network​",
+        optionA: "Largest​",
+        optionB: "Fastest Growing​",
+        optionC: "None​",
+        optionD: "Both a & b​",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "For Public Charging points Tata Power EZ Charge has tie ups with:​",
+        optionA: "Hotels & Malls​",
+        optionB: "Residential Societies​",
+        optionC: "Corporates​",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "Tata Power EZ Charge is present across​",
+        optionA: "Captive",
+        optionB: "Fleet​",
+        optionC: "Bus Charging ​",
+        optionD: "All of the above​",
+        correctOption: "optionD"
+    },
+
+    {
+        question: "Tata Power EZ Charge charging points are present across _ cities in India",
+        optionA: "300+",
+        optionB: "350+",
+        optionC: "400+​",
+        optionD: "450+​",
+        correctOption: "optionD"
+    },
+
+ {
+        question: "The 1st Tata Power EZ Charge point was Installed in the year __​",
+        optionA: "2017",
+        optionB: "2018",
+        optionC: "2016",
+        optionD: "2015​",
+        correctOption: "optionA"
+    }
+
+
+]
+
+
+let shuffledQuestions = [] //empty array to hold shuffled selected questions
+
+function handleQuestions() { 
+    //function to shuffle and push 10 questions to shuffledQuestions array
+    while (shuffledQuestions.length <= 4) {
+        const random = questions[Math.floor(Math.random() * questions.length)]
+        if (!shuffledQuestions.includes(random)) {
+            shuffledQuestions.push(random)
+        }
+    }
+}
+
+
+let questionNumber = 1
+let playerScore = 0  
+let wrongAttempt = 0 
+let indexNumber = 0
+
+// function for displaying next question in the array to dom
+function NextQuestion(index) {
+    handleQuestions()
+    const currentQuestion = shuffledQuestions[index]
+    document.getElementById("question-number").innerHTML = questionNumber
+    document.getElementById("player-score").innerHTML = playerScore
+    document.getElementById("display-question").innerHTML = currentQuestion.question;
+    document.getElementById("option-one-label").innerHTML = currentQuestion.optionA;
+    document.getElementById("option-two-label").innerHTML = currentQuestion.optionB;
+    document.getElementById("option-three-label").innerHTML = currentQuestion.optionC;
+    document.getElementById("option-four-label").innerHTML = currentQuestion.optionD;
+
+}
+
+
+function checkForAnswer() {
+    const currentQuestion = shuffledQuestions[indexNumber] //gets current Question 
+    const currentQuestionAnswer = currentQuestion.correctOption //gets current Question's answer
+    const options = document.getElementsByName("option"); //gets all elements in dom with name of 'option' (in this the radio inputs)
+    let correctOption = null
+
+    options.forEach((option) => {
+        if (option.value === currentQuestionAnswer) {
+            //get's correct's radio input with correct answer
+            correctOption = option.labels[0].id
+        }
+    })
+   
+    //checking to make sure a radio input has been checked or an option being chosen
+    if (options[0].checked === false && options[1].checked === false && options[2].checked === false && options[3].checked == false) {
+        document.getElementById('option-modal').style.display = "flex"
+    }
+	
+
+
+    //checking if checked radio button is same as answer
+    options.forEach((option) => {
+        if (option.checked === true && option.value === currentQuestionAnswer) {
+			document.getElementById('currect-answer-modal').style.display = "flex"
+            //document.getElementById(correctOption).style.backgroundColor = "green"
+            playerScore++
+            indexNumber++
+            //set to delay question number till when next question loads
+            setTimeout(() => {
+                questionNumber++
+            }, 500)
+        }
+
+        else if (option.checked && option.value !== currentQuestionAnswer) {
+			document.getElementById('wrong-answer-modal').style.display = "flex"
+            const wrongLabelId = option.labels[0].id
+            //document.getElementById(wrongLabelId).style.backgroundColor = "red"
+            //document.getElementById(correctOption).style.backgroundColor = "green"
+            wrongAttempt++
+            indexNumber++
+            //set to delay question number till when next question loads
+            setTimeout(() => {
+                questionNumber++
+            }, 500)
+        }
+			
+		
+    })
+}
+
+
+
+//called when the next button is called
+function handleNextQuestion() {
+    checkForAnswer()
+    unCheckRadioButtons()
+    //delays next question displaying for a second
+    setTimeout(() => {
+        if (indexNumber <= 4) {
+            NextQuestion(indexNumber)
+        }
+        else {
+            handleEndGame()
+        }
+        resetOptionBackground()
+    }, 500);
+}
+
+//sets options background back to null after display the right/wrong colors
+function resetOptionBackground() {
+    const options = document.getElementsByName("option");
+    options.forEach((option) => {
+        document.getElementById(option.labels[0].id).style.backgroundColor = ""
+    })
+}
+
+// unchecking all radio buttons for next question(can be done with map or foreach loop also)
+function unCheckRadioButtons() {
+    const options = document.getElementsByName("option");
+    for (let i = 0; i < options.length; i++) {
+        options[i].checked = false;
+    }
+}
+
+// function for when all questions being answered
+function handleEndGame() {
+    let remark = null
+    let remarkColor = null
+
+    // condition check for player remark and remark color
+    if (playerScore <= 1) {
+        remark = "Bad grades, keep practicing"
+        remarkColor = "red"
+    }
+    else if (playerScore >= 2 && playerScore < 3) {
+        remark = "Average grades, you can do better"
+        remarkColor = "orange"
+    }
+    else if (playerScore >= 4) {
+        remark = "Excellent, keep the good work going"
+        remarkColor = "green"
+    }
+    const playerGrade = (playerScore / 5) * 100
+
+    //data to display to score board
+    document.getElementById('remarks').innerHTML = remark
+    document.getElementById('remarks').style.color = remarkColor
+    document.getElementById('grade-percentage').innerHTML = playerGrade
+    document.getElementById('wrong-answers').innerHTML = wrongAttempt
+    document.getElementById('right-answers').innerHTML = playerScore
+    document.getElementById('score-modal').style.display = "flex"
+	document.getElementById('currect-answer-modal').style.display = "none"
+	document.getElementById('wrong-answer-modal').style.display = "none"
+
+}
+
+//closes score modal and resets game
+function closeScoreModal() {
+    questionNumber = 1
+    playerScore = 0
+    wrongAttempt = 0
+    indexNumber = 0
+    shuffledQuestions = []
+    NextQuestion(indexNumber)
+    document.getElementById('score-modal').style.display = "none"
+	document.getElementById('contact-form').style.display = "block";
+	document.getElementById('quize-wrapper').style.display = "none";
+	
+}
+
+//function to close warning modal
+function closeOptionModal() {
+    document.getElementById('option-modal').style.display = "none"
+	 document.getElementById('currect-answer-modal').style.display = "none"
+	  document.getElementById('wrong-answer-modal').style.display = "none"
+}
+
+
+/*-------form validation-------*/
+
+
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const password2 = document.getElementById('password2');
+
+//Show input error messages
+function showError(input, message) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control error';
+    const small = formControl.querySelector('small');
+    small.innerText = message;
+}
+
+//show success colour
+function showSucces(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
+}
+
+//check email is valid
+function checkEmail(input) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(input.value.trim())) {
+        showSucces(input)
+    }else {
+        showError(input,'Email is not invalid');
+    }
+}
+
+
+//checkRequired fields
+function checkRequired(inputArr) {
+    inputArr.forEach(function(input){
+        if(input.value.trim() === ''){
+            showError(input,`${getFieldName(input)} is required`)
+        }else {
+            showSucces(input);
+        }
+    });
+}
+
+
+//check input Length
+function checkLength(input, min ,max) {
+    if(input.value.length < min) {
+        showError(input, `${getFieldName(input)} must be at least ${min} characters`);
+    }else if(input.value.length > max) {
+        showError(input, `${getFieldName(input)} must be les than ${max} characters`);
+    }else {
+        showSucces(input);
+    }
+}
+
+//get FieldName
+function getFieldName(input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+// check passwords match
+function checkPasswordMatch(input1, input2) {
+    if(input1.value !== input2.value) {
+        showError(input2, 'Passwords do not match');
+    }
+}
+
+
+//Event Listeners
+form.addEventListener('submit',function(e) {
+    e.preventDefault();
+
+    checkRequired([username, email, password, password2]);
+    checkLength(username,3,15);
+    checkLength(password,6,25);
+    checkEmail(email);
+    checkPasswordMatch(password, password2);
+});
+
+ 
+</script>
+
+
+</html>
+ 
